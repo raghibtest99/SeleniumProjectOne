@@ -73,7 +73,7 @@ public class SeleniumClassOne {
 	public static void FirefoxBrowserMethod() throws InterruptedException {
 		//Firefox Browser
 		//System.setProperty("webdriver.gecko.driver", "C:\\SELENIUM\\browser-driver\\firefox\\geckodriver-v0.29.0-win64\\geckodriver.exe");
-		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"geckodriver-v0.29.0-win64"+File.separator+"geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"firefox"+File.separator+"geckodriver-v0.29.0-win64"+File.separator+"geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
 		
 		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
@@ -128,11 +128,11 @@ public class SeleniumClassOne {
 	
 	public static void main(String[] args) {
 		try {
-			SeleniumClassOne.chromeBrowserMethod();
-			SeleniumClassOne.EdgeBrowserMethod();
-			SeleniumClassOne.IEBrowserMethod();
+			//SeleniumClassOne.chromeBrowserMethod();
+			//SeleniumClassOne.EdgeBrowserMethod();
+			//SeleniumClassOne.IEBrowserMethod();
 			SeleniumClassOne.FirefoxBrowserMethod();
-			SeleniumClassOne.OperaBrowserMethod();
+			//SeleniumClassOne.OperaBrowserMethod();
 			//SeleniumClassOne.chromeBrowserInDebugMode();
 		} catch (Exception e) {
 			e.printStackTrace();
