@@ -1,6 +1,7 @@
 package com.raghib.selenium;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,13 +26,17 @@ public class SeleniumClassOne {
 		System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"chromedriver_win32"+File.separator+"chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
+		driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.MINUTES);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
 		driver.get("https://www.google.com/");
-        driver.manage().window().maximize();	
-        
+                
         driver.findElement(By.xpath("//a[contains(text(),'Gmail')]")).click();
         driver.findElement(By.linkText("Sign in")).click();
         
-        Thread.sleep(10000);
         driver.quit();
         
 	}
@@ -46,12 +51,17 @@ public class SeleniumClassOne {
 		System.setProperty("webdriver.edge.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"edgedriver_win64"+File.separator+"msedgedriver.exe");
 		WebDriver driver = new EdgeDriver();
 		
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
+		driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.MINUTES);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
 		driver.get("https://login.yahoo.com/");
-        driver.manage().window().maximize();
-        driver.findElement(By.name("username")).sendKeys("ru1251985@yahoo.co.in");
+        
+		driver.findElement(By.name("username")).sendKeys("ru1251985@yahoo.co.in");
         driver.findElement(By.id("login-signin")).click();
         
-        Thread.sleep(10000);
         driver.close();
         
 	}
@@ -62,8 +72,13 @@ public class SeleniumClassOne {
 		System.setProperty("webdriver.ie.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"IEDriverServer_x64_3.150.1"+File.separator+"IEDriverServer.exe");
 		WebDriver driver = new InternetExplorerDriver();
 		
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
+		driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
 		driver.get("https://www.toolsqa.com/");
-        driver.manage().window().maximize();
         
         //Below both are not working in IE
         //driver.close();
@@ -76,11 +91,16 @@ public class SeleniumClassOne {
 		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"firefox"+File.separator+"geckodriver-v0.29.0-win64"+File.separator+"geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
 		
-		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
-        driver.manage().window().maximize();
+		driver.manage().window().maximize();
+		//driver.manage().deleteAllCookies();
+		
+		driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		
+		//driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+		driver.get("https://www.google.com/");
         
-        Thread.sleep(10000);
-        driver.close();
+		driver.close();
         //driver.quit();
         
 	}	
@@ -94,10 +114,14 @@ public class SeleniumClassOne {
 		System.setProperty("webdriver.opera.driver",System.getProperty("user.dir")+File.separator+"browserdrivers"+File.separator+"operadriver_win32"+File.separator+"operadriver.exe");
 		WebDriver driver = new OperaDriver(options);
 		
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
+		driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		
 		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
-        driver.manage().window().maximize();
         
-        Thread.sleep(10000);
 		driver.quit();
         
 	}
@@ -128,10 +152,10 @@ public class SeleniumClassOne {
 	
 	public static void main(String[] args) {
 		try {
-			//SeleniumClassOne.chromeBrowserMethod();
+			SeleniumClassOne.chromeBrowserMethod();
 			//SeleniumClassOne.EdgeBrowserMethod();
 			//SeleniumClassOne.IEBrowserMethod();
-			SeleniumClassOne.FirefoxBrowserMethod();
+			//SeleniumClassOne.FirefoxBrowserMethod();
 			//SeleniumClassOne.OperaBrowserMethod();
 			//SeleniumClassOne.chromeBrowserInDebugMode();
 		} catch (Exception e) {
